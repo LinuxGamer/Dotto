@@ -11,7 +11,7 @@
 #include <doc/Selection.hpp>
 #include <tools/Tool.hpp>
 
-class Marquee : public  Tool {
+class Wand : public  Tool {
 public:
     PubSub<> pub{this};
 
@@ -84,4 +84,4 @@ public:
     }
 };
 
-static Tool::Shared<Marquee> marquee{"marquee"};
+static Tool::Shared<Wand> wand{"wand"};
