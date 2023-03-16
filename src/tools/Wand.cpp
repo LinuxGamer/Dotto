@@ -11,14 +11,14 @@
 #include <doc/Selection.hpp>
 #include <tools/Tool.hpp>
 
-class Wand : public Tool {
+class Marquee : public  Tool {
 public:
     PubSub<> pub{this};
 
     Preview preview {
         .hideCursor = false,
         .overlay = inject<Selection>{"new"},
-        .overlayColor = Color{55, 55, 55, 200},
+        .overlayColor = Color{200, 200, 200, 200},
         .altColor = Color{55, 55, 55, 200},
         .draw = Tool::Preview::drawOutlineAnts
     };
@@ -31,7 +31,7 @@ public:
         if (points.size() < 2 || !which) {
             return;
         }
-        if (points.size() >=2) {
+        if (points.size() >= 2) {
             area.x = points.front().x;
             area.y = points.front().y;
             area.width = points.back().x - area.x;
@@ -45,7 +45,7 @@ public:
                 area.height = -area.height;
             }
         }
-        
+
         if (which == 1)
             preview.overlay->clear();
         if (which == 2)
@@ -84,4 +84,4 @@ public:
     }
 };
 
-static Tool::Shared<Wand> wand{"wand"};
+static Tool::Shared<Marquee> marquee{"marquee"};
